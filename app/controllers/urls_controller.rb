@@ -43,7 +43,7 @@ class UrlsController < ApplicationController
  def redirect
    url = Url.find_by(short_url: params[:short_url])
    if url
-     redirect_to url.original_url
+    redirect_to url.original_url, allow_other_host: true
    else
      render json: { error: 'URL not found' }, status: 404
    end
